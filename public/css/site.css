@@ -1,0 +1,85 @@
+﻿html {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    color: rgb(204, 219, 255);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.gl-container {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.log {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 10px 0 0;
+    border: 1px solid rgb(25, 37, 125);
+    background-color: rgba(0, 0, 0, 0.69);
+    color: rgba(224, 224, 224, 0.3);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: .8em;
+}
+
+    .log > .log-item {
+        margin: 5px;
+        display: block;
+    }
+
+.container {
+    align-items: center;
+    display: flex;
+    height: 2em;
+    margin: auto;
+    justify-content: center;
+    position: absolute;
+    width: 13em;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+    .container > .content {
+        cursor: pointer;
+    }
+
+.content {
+    font-size: 1.2em;
+    transition: all 1s ease;
+    margin: .1em;
+}
+
+.blue {
+    color: rgb(182, 219, 255);
+}
+
+.orange {
+    color: rgb(255, 182, 119);
+}
+
+.yellow {
+    color: rgb(255, 255, 109);
+}
+
+    .blue:hover, .orange:hover, .yellow:hover {
+        color: white;
+    }
+
+.hidden {
+    visibility: hidden;
+}
