@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width" />
     <title>Get Nimbler!</title>
     <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/components.css" />
     <script src="scripts/index.js"></script>
 </head>
 <body>
-    <div>
-        <div class="gl-container" id="container"></div>
-        <div class="log" id="logger"></div>
-    </div>
+    <label>This is a textbox component</label>
+    <textbox params="{text: text}"></textbox>
+
+    <label>This is a panel component</label>
+    <panel params="{label: text}"></panel>
+
+    <label>This is a a normal input</label>
+    <input type="text" data-bind="textInput: text" />
 </body>
 </html>

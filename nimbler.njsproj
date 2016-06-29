@@ -16,15 +16,18 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="assets\main.js" />
     <Compile Include="public\scripts\index.js" />
     <Compile Include="server.js" />
     <Content Include="package.json" />
+    <Content Include="public\css\components.css" />
     <Content Include="public\css\site.css" />
     <Content Include="public\index.html" />
     <Content Include="README.md" />
     <Compile Include="app.js" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\" />
     <Folder Include="public\" />
     <Folder Include="public\css\" />
     <Folder Include="public\scripts\" />

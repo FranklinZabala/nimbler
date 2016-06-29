@@ -1,0 +1,15 @@
+﻿.panel {
+    background: yellow;
+    padding: 1em;
+    margin: 1em;
+}
+
+.textbox {
+    margin: 1em;
+}
+
+    .textbox > input {
+        background: purple;
+        border: none;
+        padding: 1em;
+    }
