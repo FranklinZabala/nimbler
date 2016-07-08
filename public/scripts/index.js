@@ -1,37 +1,95 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var jQuery = require("jquery");
-var ko = require("knockout");
 var host = location.origin.replace(/^http/, "ws");
 var ws = new WebSocket(host);
+var componentInitializer = require('./components/component-initializer.js');
 
-jQuery(document).ready(function () {
-    ws.onmessage = function (e) {        
+var Bootstrapper = function () { };
+
+Bootstrapper.prototype.initialize = function () {
+    componentInitializer.initialize();    
+
+    ws.onmessage = function (e) {
         ws.send("ping back " + e);
     };
+};
 
+module.exports = new Bootstrapper();
+},{"./components/component-initializer.js":2}],2:[function(require,module,exports){
+var ko = require("knockout");
+
+var ComponentInitializer = function () { };
+
+ComponentInitializer.prototype.initialize = function () {
     ko.components.register("panel", {
-        viewModel: function (params) {
-            var self = this;
-            self.label = params.label;
-        },
-        template: "<div class='panel' data-bind='text: label'></div>"
+        viewModel: require("./panel/panel.js"),
+        template: "﻿<div class=\"panel\" data-bind=\"text: label\"></div>"
     });
     
     ko.components.register("textbox", {
-        viewModel: function (params) {
-            var self = this;
-            self.text = params.text;
-        },
-        template: "<div class='textbox'><input type='text' data-bind='textInput: text'></div>"
+        viewModel: require('./textbox/textbox.js'),
+        template: "﻿<div class=\"textbox\"><input type=\"text\" data-bind=\"textInput: text\"></div>"
+    });
+    
+    ko.components.register("composite", {
+        viewModel: require('./composite/composite.js'),
+        template: "﻿<div class=\"composite\">\r\n    <textbox params=\"{text: text}\"></textbox>\r\n    <panel params=\"{label: label}\"></panel>\r\n</div>"
     });    
     
     ko.applyBindings({
-        text: ko.observable("fasdf"),
+        text: ko.observable("jaksjdfkjadsf"),
     });
+};
+
+module.exports = new ComponentInitializer();
+},{"./composite/composite.js":3,"./panel/panel.js":4,"./textbox/textbox.js":5,"knockout":8}],3:[function(require,module,exports){
+var ko = require("knockout");
+
+function viewModel(params) {
+    var self = this;
+    self.label = params.label;
+    self.text = params.text;
+};
+
+module.exports = {
+    viewModel: viewModel,
+};
+},{"knockout":8}],4:[function(require,module,exports){
+var ko = require("knockout");
+
+function viewModel(params) {
+    var self = this;
+    self.label = params.label;
+};
+
+module.exports = {
+    viewModel: viewModel,
+};
+},{"knockout":8}],5:[function(require,module,exports){
+var ko = require("knockout");
+
+function viewModel(params) {
+    var self = this;
+    self.text = params.text;
+};
+
+module.exports = {
+    viewModel: viewModel,
+};
+
+},{"knockout":8}],6:[function(require,module,exports){
+"use strict";
+
+var ko = require("knockout");
+var jQuery = require("jquery");
+var bootstrapper = require("./bootstrapper.js");
+
+jQuery(document).ready(function () {
+    bootstrapper.initialize();
 });
-},{"jquery":2,"knockout":3}],2:[function(require,module,exports){
+
+},{"./bootstrapper.js":1,"jquery":7,"knockout":8}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.0.0
  * https://jquery.com/
@@ -10070,7 +10128,7 @@ if ( !noGlobal ) {
 return jQuery;
 } ) );
 
-},{}],3:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 /*!
  * Knockout JavaScript library v3.4.0
  * (c) Steven Sanderson - http://knockoutjs.com/
@@ -15943,4 +16001,4 @@ ko.exportSymbol('nativeTemplateEngine', ko.nativeTemplateEngine);
 }());
 })();
 
-},{}]},{},[1]);
+},{}]},{},[6]);

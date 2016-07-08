@@ -1,4 +1,10 @@
-﻿.panel {
+﻿.composite {
+    background: pink;
+    margin: 1em;
+    padding: 1em;
+}
+
+.panel {
     background: yellow;
     padding: 1em;
     margin: 1em;
