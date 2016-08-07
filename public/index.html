@@ -10,13 +10,8 @@
     <script src="scripts/index.js"></script>
 </head>
 <body>
-    <label>This is a textbox component</label>
-    <textbox params="{text: text}"></textbox>
-
-    <label>This is a panel component</label>
-    <panel params="{label: text}"></panel>
-
-    <label>This is a a composite component</label>
-    <composite params="{label: text, text: text}"></composite>
+    <div data-bind="foreach: stories">
+        <story params="{points: points, title: title, description: description}"></story>
+    </div>
 </body>
 </html>

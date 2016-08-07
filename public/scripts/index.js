@@ -35,15 +35,28 @@ ComponentInitializer.prototype.initialize = function () {
     ko.components.register("composite", {
         viewModel: require('./composite/composite.js'),
         template: "﻿<div class=\"composite\">\r\n    <textbox params=\"{text: text}\"></textbox>\r\n    <panel params=\"{label: label}\"></panel>\r\n</div>"
-    });    
+    });
+    
+    ko.components.register("input-panel", {
+        viewModel: require('./input-panel/input-panel.js'),
+        template: "﻿<div class=\"input-panel\">\r\n    <textbox params=\"{text: value}\"></textbox>\r\n</div>"
+    });
+    
+    ko.components.register("story", {
+        viewModel: require('./story/story.js'),
+        template: "﻿<div class=\"story\">\r\n    <span><label class=\"points\" data-bind=\"text:points\"></label></span>\r\n    <label class=\"title\" data-bind=\"text:title\"></label>\r\n    <span class=\"description\" data-bind=\"text:description\"></span>\r\n    <div class=\"footer\"></div>\r\n</div>"
+    });
     
     ko.applyBindings({
-        text: ko.observable("jaksjdfkjadsf"),
+        stories : [
+            { points: 8, title: "some title", description: "The quick brown fox jumps over the lazy dog near the bank of the river. The quick brown fox jumps over the lazy dog near the bank of the river." },            
+            { points: 8, title: "some title", description: "some description" }
+        ]
     });
 };
 
 module.exports = new ComponentInitializer();
-},{"./composite/composite.js":3,"./panel/panel.js":4,"./textbox/textbox.js":5,"knockout":8}],3:[function(require,module,exports){
+},{"./composite/composite.js":3,"./input-panel/input-panel.js":4,"./panel/panel.js":5,"./story/story.js":6,"./textbox/textbox.js":7,"knockout":10}],3:[function(require,module,exports){
 var ko = require("knockout");
 
 function viewModel(params) {
@@ -55,7 +68,18 @@ function viewModel(params) {
 module.exports = {
     viewModel: viewModel,
 };
-},{"knockout":8}],4:[function(require,module,exports){
+},{"knockout":10}],4:[function(require,module,exports){
+var ko = require("knockout");
+
+function viewModel(params) {
+    var self = this;
+    self.value = params.value;
+};
+
+module.exports = {
+    viewModel: viewModel,
+};
+},{"knockout":10}],5:[function(require,module,exports){
 var ko = require("knockout");
 
 function viewModel(params) {
@@ -66,7 +90,20 @@ function viewModel(params) {
 module.exports = {
     viewModel: viewModel,
 };
-},{"knockout":8}],5:[function(require,module,exports){
+},{"knockout":10}],6:[function(require,module,exports){
+var ko = require("knockout");
+
+function viewModel(params) {
+    var self = this;
+    self.points = params.points;
+    self.title = params.title;
+    self.description = params.description;
+};
+
+module.exports = {
+    viewModel: viewModel,
+};
+},{"knockout":10}],7:[function(require,module,exports){
 var ko = require("knockout");
 
 function viewModel(params) {
@@ -78,7 +115,7 @@ module.exports = {
     viewModel: viewModel,
 };
 
-},{"knockout":8}],6:[function(require,module,exports){
+},{"knockout":10}],8:[function(require,module,exports){
 "use strict";
 
 var ko = require("knockout");
@@ -89,7 +126,7 @@ jQuery(document).ready(function () {
     bootstrapper.initialize();
 });
 
-},{"./bootstrapper.js":1,"jquery":7,"knockout":8}],7:[function(require,module,exports){
+},{"./bootstrapper.js":1,"jquery":9,"knockout":10}],9:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.0.0
  * https://jquery.com/
@@ -10128,7 +10165,7 @@ if ( !noGlobal ) {
 return jQuery;
 } ) );
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*!
  * Knockout JavaScript library v3.4.0
  * (c) Steven Sanderson - http://knockoutjs.com/
@@ -16001,4 +16038,4 @@ ko.exportSymbol('nativeTemplateEngine', ko.nativeTemplateEngine);
 }());
 })();
 
-},{}]},{},[6]);
+},{}]},{},[8]);

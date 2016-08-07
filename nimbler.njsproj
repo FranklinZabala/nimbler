@@ -19,13 +19,17 @@
     <Compile Include="assets\bootstrapper.js" />
     <Compile Include="assets\components\component-initializer.js" />
     <Compile Include="assets\components\composite\composite.js" />
+    <Compile Include="assets\components\input-panel\input-panel.js" />
     <Compile Include="assets\components\panel\panel.js" />
+    <Compile Include="assets\components\story\story.js" />
     <Compile Include="assets\main.js" />
     <Compile Include="assets\components\textbox\textbox.js" />
     <Compile Include="public\scripts\index.js" />
     <Compile Include="server.js" />
     <Content Include="assets\components\composite\composite.html" />
+    <Content Include="assets\components\input-panel\input-panel.html" />
     <Content Include="assets\components\panel\panel.html" />
+    <Content Include="assets\components\story\story.html" />
     <Content Include="assets\components\textbox\textbox.html" />
     <Content Include="package.json" />
     <Content Include="public\css\components.css" />
@@ -38,6 +42,8 @@
     <Folder Include="assets\" />
     <Folder Include="assets\components\" />
     <Folder Include="assets\components\composite\" />
+    <Folder Include="assets\components\input-panel\" />
+    <Folder Include="assets\components\story\" />
     <Folder Include="assets\components\panel\" />
     <Folder Include="assets\components\textbox\" />
     <Folder Include="public\" />
